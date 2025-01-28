@@ -128,3 +128,27 @@ sequenceDiagram
     Usuario->>Lead: Envía mensaje  
     Sistema->>Dashboard: Actualiza métricas  
 ```
+
+## d Estructurar el Documento
+
+### Ordenar Lógicamente
+
+El documento está estructurado siguiendo una narrativa de problema-solución para facilitar la comprensión:
+
+1. Identificación del problema.
+2. Definición del alcance del proyecto.
+3. Propuestas visuales para ilustrar el flujo y la interfaz del sistema.
+
+### Filtrar los Resultados Clave
+
+KPIs Críticos:
+
+- Tiempo de respuesta <5 minutos.
+- 90% de uso de plantillas automatizadas.
+- Incremento del 20% en conversiones.
+
+MVP Prioritario: Tabla de leads, integración con WhatsApp, plantillas predefinidas y dashboard básico.
+
+### Mantener el Formato Markdown
+
+Se utiliza formato Markdown para una presentación clara y compatible con distintas herramientas. Los diagramas Mermaid mejoran la visualización de flujos y prioridades funcionales.
