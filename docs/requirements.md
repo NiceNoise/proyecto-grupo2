@@ -1,47 +1,63 @@
-# Interfaces de baja fidelidad
+# Documentación del Proyecto: Automatización de Mensajes Predeterminados en WhatsApp
 
-- Dashboard principal:
-  - Lista de leads con nombre, número y etiquetas.
-  - Botón para cargar CSV.
-  - Botón para abrir WhatsApp con mensaje predeterminado.
-- Configuración de plantillas:
-  - Formulario para crear/editar plantillas.
-  - Lista de plantillas disponibles.
-- Página de estadísticas:
-  - Gráficos de mensajes enviados y respuestas recibidas.
-  - Filtros por fecha y etiquetas.
-
-## Flujos
-
-- Flujo de carga de leads:
-  Cargar CSV → Verificar datos → Mostrar en tabla.
-- Flujo de envío de mensaje:
-  Seleccionar lead → Abrir WhatsApp → Enviar mensaje predeterminado → Registrar envío.
-- Flujo de seguimiento:
-  Etiquetar lead → Actualizar estado → Ver en tabla de seguimiento.
+Este documento describe el análisis, alcance, diseño y estructura del proyecto para automatizar el envío de mensajes predeterminados en WhatsApp para la empresa Repensar.
 
 ---
 
-## d Estructurar el documento
+## a) Analizar el problema
 
-### Ordenar lógicamente
+### Descripción del negocio
 
-1. Análisis del problema.
-2. Definición del alcance.
-3. Wireframes y bocetos.
-4. Conclusiones y próximos pasos.
+Repensar es una empresa que ofrece cursos y programas educativos a través de campañas publicitarias en Meta Ads. Los leads generados son contactados principalmente a través de WhatsApp, donde se brinda información personalizada sobre los programas ofrecidos.
 
-### Filtrar los resultados clave
+### Dolor actual (pain point)
 
-- Enfocarse en los pain points principales (gestión manual, falta de personalización).
-- Destacar las funcionalidades core (tabla de usuarios, plantillas, estadísticas).
+- Gestión manual de leads: Los mensajes se envían manualmente, lo que consume tiempo y genera respuestas inconsistentes.
+- Falta de personalización: No hay un sistema para enviar mensajes predeterminados adaptados a las necesidades de cada lead.
+- Seguimiento desorganizado: No existe un registro centralizado de las interacciones, lo que dificulta el seguimiento y la medición de resultados.
+- Tiempo de respuesta lento: Los leads no reciben respuestas inmediatas, lo que puede reducir las tasas de conversión.
 
-### Mantener el formato markdown
+### Beneficios esperados
 
-Este documento está escrito en markdown para garantizar claridad y facilidad de lectura.
+- Reducción del tiempo de respuesta: Enviar mensajes predeterminados de manera automática para responder rápidamente a los leads.
+- Personalización: Utilizar plantillas de mensajes adaptadas a diferentes etapas del funnel (bienvenida, seguimiento, cierre).
+- Seguimiento organizado: Registrar automáticamente las interacciones y estados de los leads para mejorar la coordinación del equipo.
+- Mejora en la conversión: Aumentar las tasas de conversión al ofrecer una experiencia más profesional y ágil.
 
 ---
 
-## Conclusiones
+## b) Definir el alcance
 
-La automatización del envío de mensajes predeterminados en WhatsApp permitirá a Repensar optimizar su proceso de atención a leads, reducir tiempos de respuesta y mejorar las tasas de conversión. Este proyecto sentará las bases para una gestión más eficiente y escalable de las interacciones con los clientes potenciales.
+### Funcionalidades core
+
+1. Tabla de usuarios:
+   - Almacenar información de leads (nombre, apellido, correo opcional y número de WhatsApp).
+   - Cargar usuarios por lotes desde un archivo CSV.
+2. Integración con WhatsApp:
+   - Abrir WhatsApp al hacer clic en un usuario de la lista.
+   - Configurar plantillas de mensajes predeterminados para diferentes etapas del funnel.
+3. Registro y seguimiento:
+   - Registrar automáticamente los mensajes enviados.
+   - Etiquetar usuarios según su etapa en el funnel (nuevo, contactado, en seguimiento, cerrado).
+   - Etiquetar usuarios según el curso de interés.
+4. Estadísticas y reportes:
+   - Página de estadísticas para visualizar métricas clave (mensajes enviados, respuestas recibidas, conversiones).
+
+### Restricciones técnicas
+
+- La solución debe funcionar en WhatsApp Web (desktop) y WhatsApp para móviles.
+- Debe ser compatible con la carga de hasta 220 leads por semana.
+- No se requieren integraciones complejas con Meta Ads, pero debe ser escalable para futuras integraciones.
+
+### Entregables mínimos
+
+- Prototipo funcional con integración básica de WhatsApp.
+- Tabla de usuarios con carga desde CSV.
+- Plantillas de mensajes predeterminados configurables.
+- Página de estadísticas básica.
+
+---
+
+## c) Wireframes y bocetos
+
+### Mapa del sitio
