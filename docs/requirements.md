@@ -84,7 +84,6 @@ Sistema básico de gestión de leads con:
 ```mermaid  
 graph TD  
   A[Login] --> B[Tabla de Leads]  
-  B --> C[Detalle del Lead]  
   B --> D[Importar CSV]  
   B --> E[Configurar Plantillas]  
   B --> F[Dashboard]  
