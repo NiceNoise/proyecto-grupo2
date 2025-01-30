@@ -83,6 +83,6 @@ El MVP se centra en las siguientes funcionalidades clave:
 
 ## Enlaces a los documentos (docs/)
 
-[docs de Gino](https://github.com/NiceNoise/proyecto-grupo2/blob/main/docs/team.md)
-[docs de Eduard](https://github.com/NiceNoise/proyecto-grupo2/blob/rivas_dev/docs/user-stories.md)
-[docs de Moisés](https://github.com/NiceNoise/proyecto-grupo2/blob/rojas_dev/docs/requirements.md)
+[team](https://github.com/NiceNoise/proyecto-grupo2/blob/main/docs/team.md)
+[user-stories](https://github.com/NiceNoise/proyecto-grupo2/blob/rivas_dev/docs/user-stories.md)
+[requeriment](https://github.com/NiceNoise/proyecto-grupo2/blob/rojas_dev/docs/requirements.md)
