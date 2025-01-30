@@ -26,6 +26,10 @@ h2 {
 }
 
 /* Tablas */
+.table-responsive {
+    overflow-x: auto; /* Hace que la tabla sea desplazable en pantallas pequeñas */
+}
+
 .table {
     margin-top: 15px;
     background-color: white;
@@ -39,11 +43,15 @@ h2 {
     color: white;
     padding: 12px;
     border: none;
+    text-align: center;
 }
 
 .table td {
     padding: 10px;
     border: none;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap; /* Evita que el contenido se divida en varias líneas */
 }
 
 /* Botones */
@@ -107,12 +115,34 @@ input.form-control {
         padding: 15px;
     }
 
+    .table-responsive {
+        overflow-x: auto;
+    }
+
     .table th, .table td {
         font-size: 14px;
         padding: 8px;
+        white-space: nowrap;
     }
 
     .btn {
         padding: 6px 12px;
+    }
+
+    .search-container {
+        flex-direction: column; /* Apila los elementos en pantallas pequeñas */
+    }
+
+    .search-container input {
+        width: 100%;
+    }
+
+    .search-container .btn {
+        width: 100%;
+    }
+
+    .btn {
+        width: 100%; /* Hace que los botones ocupen todo el ancho en móviles */
+        margin-bottom: 8px;
     }
 }
