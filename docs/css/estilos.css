@@ -1,148 +1,182 @@
-/* Estilo general */
+/* Global Styles */
 body {
-    font-family: 'Inter', sans-serif;
-    background-color: #f8f9fa;
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f7fc;
     color: #333;
+    line-height: 1.6;
     margin: 0;
-    padding: 20px;
+    padding: 0;
 }
 
-/* Contenedor principal */
-.container {
-    background: white;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    max-width: 900px;
-    margin: auto;
-}
-
-/* Títulos */
 h2 {
-    color: #0d6efd;
-    font-weight: 600;
-    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #007bff;
     margin-bottom: 20px;
 }
 
-/* Tablas */
-.table-responsive {
-    overflow-x: auto; /* Hace que la tabla sea desplazable en pantallas pequeñas */
+/* Container */
+.container {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.1);
 }
 
-.table {
-    margin-top: 15px;
-    background-color: white;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-}
-
-.table th {
-    background-color: #0d6efd;
-    color: white;
-    padding: 12px;
-    border: none;
-    text-align: center;
-}
-
-.table td {
+/* Search Bar */
+#filePath {
+    border: 2px solid #007bff;
+    border-radius: 30px;
     padding: 10px;
-    border: none;
-    text-align: center;
-    vertical-align: middle;
-    white-space: nowrap; /* Evita que el contenido se divida en varias líneas */
+    transition: 0.3s;
 }
 
-/* Botones */
-.btn {
-    border-radius: 8px;
-    padding: 8px 16px;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    font-weight: 500;
-}
-
-.btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+#filePath:focus {
+    border-color: #0056b3;
+    box-shadow: 0px 5px 15px rgba(0, 123, 255, 0.2);
 }
 
 .btn-primary {
-    background-color: #0d6efd;
+    background-color: #007bff;
     border: none;
+    border-radius: 30px;
+    padding: 10px 20px;
+    transition: 0.3s;
 }
 
-.btn-success {
-    background-color: #198754;
-    border: none;
+.btn-primary:hover {
+    background-color: #0056b3;
+    box-shadow: 0px 5px 15px rgba(0, 123, 255, 0.3);
 }
 
-.btn-warning {
-    background-color: #ffc107;
-    border: none;
+/* Home Button */
+.btn-outline-success {
+    border-radius: 30px;
+    padding: 10px 30px;
+    border: 2px solid #28a745;
+    color: #28a745;
+    transition: 0.3s;
 }
 
-.btn-danger {
-    background-color: #dc3545;
-    border: none;
+.btn-outline-success:hover {
+    background-color: #28a745;
+    color: #fff;
+    box-shadow: 0px 5px 15px rgba(40, 167, 69, 0.3);
 }
 
-/* Inputs */
-input.form-control {
-    border-radius: 8px;
-    border: 1px solid #ced4da;
-    padding: 10px;
+/* Table */
+.table-responsive {
+    margin-top: 20px;
 }
 
-/* Barra de búsqueda */
-.search-container {
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th, .table td {
+    padding: 12px;
+    font-size: 1rem;
+}
+
+.table thead {
+    background-color: #007bff;
+    color: white;
+}
+
+.table tbody tr {
+    transition: 0.3s;
+}
+
+.table tbody tr:hover {
+    background-color: #f1f9ff;
+}
+
+.table-hover tbody tr:hover td {
+    color: #007bff;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #f9f9f9;
+}
+
+/* Modal */
+.modal-dialog-centered {
     display: flex;
-    gap: 10px;
-    margin-bottom: 15px;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto; /* Esto asegura el centrado en el eje horizontal */
 }
 
-.search-container input {
-    flex: 1;
+.modal-content {
+    border-radius: 15px;
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.1);
+    max-width: 600px; /* Limita el ancho del modal */
+    width: 100%; /* Asegura que el modal ocupe todo el ancho permitido */
 }
 
-.search-container .btn {
-    min-width: 100px;
+.modal-header {
+    background-color: #007bff;
+    color: white;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
 }
 
-/* Responsivo */
+.modal-footer {
+    justify-content: center;
+}
+
+.btn-close {
+    background-color: #f8f9fa;
+    border-radius: 50%;
+    padding: 8px;
+}
+
+/* Inputs in Modal */
+.modal-body input {
+    border-radius: 30px;
+    padding: 10px;
+    border: 2px solid #007bff;
+    transition: 0.3s;
+}
+
+.modal-body input:focus {
+    border-color: #0056b3;
+    box-shadow: 0px 5px 15px rgba(0, 123, 255, 0.2);
+}
+
+/* Save Changes Button */
+.modal-footer .btn-primary {
+    border-radius: 30px;
+    padding: 10px 20px;
+    background-color: #28a745;
+    border: none;
+    transition: 0.3s;
+}
+
+.modal-footer .btn-primary:hover {
+    background-color: #218838;
+    box-shadow: 0px 5px 15px rgba(40, 167, 69, 0.3);
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
     .container {
         padding: 15px;
     }
 
-    .table-responsive {
-        overflow-x: auto;
+    h2 {
+        font-size: 2rem;
     }
 
-    .table th, .table td {
-        font-size: 14px;
-        padding: 8px;
-        white-space: nowrap;
+    .btn-lg {
+        font-size: 1rem;
+        padding: 8px 15px;
     }
 
-    .btn {
-        padding: 6px 12px;
-    }
-
-    .search-container {
-        flex-direction: column; /* Apila los elementos en pantallas pequeñas */
-    }
-
-    .search-container input {
-        width: 100%;
-    }
-
-    .search-container .btn {
-        width: 100%;
-    }
-
-    .btn {
-        width: 100%; /* Hace que los botones ocupen todo el ancho en móviles */
-        margin-bottom: 8px;
+    .table {
+        font-size: 0.9rem;
     }
 }
