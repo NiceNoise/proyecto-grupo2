@@ -62,6 +62,17 @@ function displayData(list) {
     });
 }
 
+// Función para redirigir a la página principal
+function goHome() {
+    window.location.href = "index.html"; // Cambia "index.html" por la ruta correcta de tu página principal
+}
+
+// Al cargar el contenido del documento
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('dataTable').innerHTML = '<tr><td colspan="7" class="text-center">No data loaded</td></tr>';
+});
+
+
 // Función para filtrar los datos
 function filterData() {
     const searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
@@ -217,3 +228,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
     displayData(data); // Mostrar los datos al cargar la página
 });
+
