@@ -1,4 +1,3 @@
-
 ## Lider Técnico: Gino Segura
 
 ## Documentación:
