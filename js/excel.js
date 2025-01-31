@@ -21,6 +21,9 @@ function loadFile(event) {
             course: line[5] || ''
         }));
 
+        // Mostrar los datos en la consola
+        console.log("Datos cargados desde el CSV:", data);
+
         displayData(data);
     };
     reader.readAsText(file);
@@ -84,6 +87,9 @@ function editRow(id) {
     // Mostrar el modal de edición
     const editModal = new bootstrap.Modal(document.getElementById('editModal'));
     editModal.show();
+
+    // Asegurarse de que el modal tenga el foco
+    document.getElementById('editModal').focus();
 }
 
 // Función para guardar los cambios
@@ -103,6 +109,10 @@ function saveChanges() {
         const index = data.findIndex(item => item.id === id);
         if (index !== -1) {
             data[index] = updatedData; // Actualizar los datos
+
+            // Mostrar en la consola los cambios guardados
+            console.log("Cambios guardados para el ID:", id, updatedData);
+
             displayData(data); // Refrescar la tabla con los datos actualizados
 
             // Cerrar el modal después de guardar

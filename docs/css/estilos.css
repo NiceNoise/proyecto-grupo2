@@ -1,154 +1,164 @@
-:root {
-    --primary-blue: #0d6efd;
-    --dark-blue: #0a58ca;
-    --white: white;
-}
-
-/* Global Styles */
+/* Estilos generales */
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #f4f7fc;
-    color: #333;
-    line-height: 1.6;
+    background-color: #f8f9fa;
     margin: 0;
     padding: 0;
 }
 
+
+/* Contenedor principal */
+.container {
+    max-width: 1200px;
+    margin: 50px auto;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Título */
 h2 {
     font-size: 2.5rem;
-    font-weight: 700;
     color: #007bff;
-    margin-bottom: 20px;
+    font-weight: 600;
 }
 
-/* Container */
-.container {
-    max-width: 900px;
-    margin: auto;
-    padding: 20px;
-    background-color: #ffffff;
-    border-radius: 15px;
-    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.1);
+/* Estilo de las entradas de texto y botones */
+.form-control {
+    border-radius: 50px;
+    padding: 12px 20px;
+    font-size: 1rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Search Bar */
-#filePath {
-    border: 2px solid #007bff;
-    border-radius: 30px;
-    padding: 10px;
-    transition: 0.3s;
+/* Estilos para la barra de búsqueda */
+#searchInput {
+    border-radius: 50px;
+    margin-right: 10px;
 }
 
-#filePath:focus {
-    border-color: #0056b3;
-    box-shadow: 0px 5px 15px rgba(0, 123, 255, 0.2);
+button {
+    border-radius: 50px;
+    padding: 10px 25px;
+    font-size: 1rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
-.btn-primary {
-    background-color: #007bff;
-    border: none;
-    border-radius: 30px;
-    padding: 10px 20px;
-    transition: 0.3s;
-}
-
-.btn-primary:hover {
-    background-color: #0056b3;
-    box-shadow: 0px 5px 15px rgba(0, 123, 255, 0.3);
-}
-
-/* Home Button */
-.btn-outline-success {
-    border-radius: 30px;
-    padding: 10px 30px;
-    border: 2px solid #28a745;
-    color: #28a745;
-    transition: 0.3s;
-}
-
-.btn-outline-success:hover {
-    background-color: #28a745;
-    color: #fff;
-    box-shadow: 0px 5px 15px rgba(40, 167, 69, 0.3);
-}
-
-/* Table */
-.table-responsive {
-    margin-top: 20px;
-}
-
-table {
-    width: 100%;
+/* Estilos para la tabla */
+.table {
     border-collapse: collapse;
+    width: 100%;
+    margin-top: 30px;
 }
 
 .table th, .table td {
-    padding: 12px;
+    padding: 15px;
+    text-align: center;
     font-size: 1rem;
 }
 
-.table thead {
-    background-color: #007bff;
-    color: white;
-}
-
-.table tbody tr {
-    transition: 0.3s;
-}
-
-.table tbody tr:hover {
-    background-color: #f1f9ff;
-}
-
-.table-hover tbody tr:hover td {
-    color: #007bff;
+.table-hover tbody tr:hover {
+    background-color: #f1f1f1;
 }
 
 .table-striped tbody tr:nth-of-type(odd) {
     background-color: #f9f9f9;
 }
 
-/* Modal */
-.modal-dialog-centered {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto;
+.table-primary {
+    background-color: #007bff;
+    color: #ffffff;
 }
 
+/* Estilo de las acciones en la tabla */
+table i {
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+table i:hover {
+    color: #007bff;
+}
+
+/* Estilo de los botones en la tabla */
+.btn-outline-success {
+    border-color: #28a745;
+    color: #28a745;
+}
+
+.btn-outline-success:hover {
+    background-color: #28a745;
+    color: white;
+}
+
+/* Estilo del modal */
 .modal-content {
-    border-radius: 15px;
-    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.1);
-    max-width: 600px;
-    width: 100%;
+    border-radius: 10px;
 }
 
 .modal-header {
     background-color: #007bff;
     color: white;
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
 
-.modal-footer {
-    justify-content: center;
+.modal-body {
+    padding: 20px;
 }
 
-.btn-close {
-    background-color: #f8f9fa;
-    border-radius: 50%;
-    padding: 8px;
+.modal-footer button {
+    border-radius: 50px;
 }
 
-/* Inputs in Modal */
-.modal-body input {
-    border-radius: 30px;
-    padding: 10px;
-    border: 2px solid #007bff;
-    transition: 0.3s;
+/* Estilo del footer */
+.footer {
+    padding: 20px 0;
+    background-color: #007bff;
+    color: white;
 }
 
-.modal-body input:focus {
-    border-color: #0056b3;
-    box-shadow: 0px 5px 15px rgba(0, 123, 255, 0.2);
+.footer .text-footer {
+    font-size: 1rem;
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer .text-footer:hover {
+    color: #f1f1f1;
+}
+
+/* Estilo del botón "Home" */
+.btn-outline-success {
+    border-radius: 50px;
+    padding: 10px 20px;
+    font-size: 1.1rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-outline-success:hover {
+    background-color: #28a745;
+    color: white;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .container {
+        margin: 20px;
+    }
+
+    .table th, .table td {
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    .btn {
+        width: 100%;
+        margin-top: 10px;
+    }
 }
