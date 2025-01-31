@@ -105,19 +105,34 @@ function saveChanges() {
     if (name && lastName && email && whatsapp && funnel && course) {
         const updatedData = { id, name, lastName, email, whatsapp, funnel, course };
 
-        // Actualizar la fila correspondiente en los datos
         const index = data.findIndex(item => item.id === id);
         if (index !== -1) {
-            data[index] = updatedData; // Actualizar los datos
-
-            // Mostrar en la consola los cambios guardados
+            data[index] = updatedData;
             console.log("Cambios guardados para el ID:", id, updatedData);
+            displayData(data);
 
-            displayData(data); // Refrescar la tabla con los datos actualizados
-
-            // Cerrar el modal después de guardar
             const editModal = bootstrap.Modal.getInstance(document.getElementById('editModal'));
             editModal.hide();
+
+            setTimeout(() => {
+                const confirmEdit = confirm("¿Estás conforme con los cambios?\nPresiona 'Aceptar' para bloquear la edición o 'Cancelar' para seguir editando.");
+                if (confirmEdit) {
+                    lockRow(id);
+                } else {
+                    editRow(id);
+                }
+            }, 500);
+        }
+    }
+}
+
+function lockRow(id) {
+    const row = document.querySelector(`tr[data-id='${id}']`);
+    if (row) {
+        const editButton = row.querySelector("button");
+        if (editButton) {
+            editButton.disabled = true;
+            editButton.textContent = "Locked";
         }
     }
 }
