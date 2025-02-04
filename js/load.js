@@ -30,14 +30,16 @@ function readCSVFile(file) {
 
 // Función para analizar los datos CSV y crear los objetos Lead
 function parseCSV(csvData) {
+    let id = 1; // Inicializar el ID en 1
     Papa.parse(csvData, {
         complete: function(results) {
             leads = []; // Limpiar el arreglo de leads antes de llenarlo
 
             results.data.forEach(function(row) {
                 if (row.length >= 4) {
-                    const lead = new Lead(row[0], row[1], row[2], row[3]);
+                    const lead = new Lead(id, row[0], row[1], row[2], row[3]);
                     leads.push(lead);
+                    id++;
                 }
             });
             
@@ -56,6 +58,7 @@ function updateTable() {
     leads.forEach(function(lead) {
         const row = document.createElement('tr');
         row.innerHTML = `
+            <td>${lead.id}</td>
             <td>${lead.nombre}</td>
             <td>${lead.apellido}</td>
             <td>${lead.correo}</td>
