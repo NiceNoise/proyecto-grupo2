@@ -87,12 +87,9 @@ function editRow(id) {
     // Mostrar el modal de edición
     const editModal = new bootstrap.Modal(document.getElementById('editModal'));
     editModal.show();
-
-    // Asegurarse de que el modal tenga el foco
-    document.getElementById('editModal').focus();
 }
 
-// Función para guardar los cambios
+// Función para guardar los cambios (permite edición N veces)
 function saveChanges() {
     const id = document.getElementById('editId').value;
     const name = document.getElementById('editName').value.trim();
@@ -111,28 +108,9 @@ function saveChanges() {
             console.log("Cambios guardados para el ID:", id, updatedData);
             displayData(data);
 
+            // Cerrar modal después de guardar
             const editModal = bootstrap.Modal.getInstance(document.getElementById('editModal'));
             editModal.hide();
-
-            setTimeout(() => {
-                const confirmEdit = confirm("¿Estás conforme con los cambios?\nPresiona 'Aceptar' para bloquear la edición o 'Cancelar' para seguir editando.");
-                if (confirmEdit) {
-                    lockRow(id);
-                } else {
-                    editRow(id);
-                }
-            }, 500);
-        }
-    }
-}
-
-function lockRow(id) {
-    const row = document.querySelector(`tr[data-id='${id}']`);
-    if (row) {
-        const editButton = row.querySelector("button");
-        if (editButton) {
-            editButton.disabled = true;
-            editButton.textContent = "Locked";
         }
     }
 }
