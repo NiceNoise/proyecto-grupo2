@@ -33,10 +33,14 @@ h2 {
 }
 
 .table th {
-    background-color: #007bff;
+    background-color: #343a40;
     color: white;
     text-align: center;
     padding: 12px;
+}
+
+.table td, .table th {
+    vertical-align: middle;
 }
 
 .table td {
@@ -53,6 +57,19 @@ h2 {
 /* Hover en filas */
 .table tbody tr:hover {
     background-color: #e9f5ff;
+}
+
+.table-responsive {
+    margin-top: 20px;
+    overflow-x: auto;
+}
+
+#default-message {
+    display: table-row;
+}
+
+.d-none {
+    display: none !important;
 }
 
 /* ===== MODAL (Edición) ===== */

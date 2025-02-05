@@ -31,23 +31,41 @@
         <input type="text" id="search-input" class="form-control" placeholder="Buscar datos..." />
     </div>
 
-    <!-- Tabla para mostrar los datos cargados del archivo Excel -->
-    <table class="table table-hover table-striped" id="data-table">
-        <thead class="thead-dark">
-            <tr>
-                <!-- Encabezado de la tabla con las columnas correspondientes -->
-                <th>Id</th>
-                <th>Name</th>
-                <th>Last Name</th>
-                <th>Email</th>
-                <th>Whatsapp</th>
-                <th>Funnel</th>
-                <th>Course</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody></tbody> <!-- Cuerpo de la tabla que se llenará dinámicamente -->
-    </table>
+    <!-- Tabla para mostrar los datos -->
+    <div class="table-responsive">
+        <table class="table table-hover table-striped" id="data-table">
+            <thead class="table-dark">
+                <tr>
+                    <th>Code</th>
+                    <th>Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Whatsapp</th>
+                    <th>Funnel</th>
+                    <th>Course</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Mensaje por defecto cuando no hay datos -->
+                <tr id="default-message">
+                    <td colspan="8" class="text-center">No hay datos disponibles</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Spinner de carga -->
+    <div id="loadingSpinner" class="text-center d-none">
+        <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Cargando...</span>
+        </div>
+    </div>
+
+    <!-- Mensaje de no resultados -->
+    <div id="noResults" class="alert alert-info d-none" role="alert">
+        No se encontraron resultados
+    </div>
 </div>
 
 <!-- Modal para editar fila (oculto por defecto) -->

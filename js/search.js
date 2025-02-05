@@ -1,10 +1,49 @@
-document.getElementById("search-input").addEventListener("input", function () {
-    const filter = this.value.toLowerCase(); // Obtener el valor del campo de búsqueda y convertirlo a minúsculas
-    const rows = document.querySelectorAll("#data-table tbody tr"); // Obtener todas las filas de la tabla
+// Función debounce para optimizar búsqueda
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
 
-    rows.forEach(row => { // Iterar sobre cada fila de la tabla
-        const text = row.textContent.toLowerCase(); // Obtener el texto completo de la fila y convertirlo a minúsculas
-        // Si el texto de la fila incluye el valor del filtro de búsqueda, mostrarla, de lo contrario, ocultarla
-        row.style.display = text.includes(filter) ? "" : "none";
-    });
-});
+document.getElementById("search-input").addEventListener("input", debounce(function () {
+    const filter = this.value.toLowerCase().trim();
+    const rows = document.querySelectorAll("#data-table tbody tr");
+    let hasResults = false;
+
+    // Mostrar indicador de búsqueda
+    const searchIndicator = document.getElementById('searchIndicator');
+    if (searchIndicator) searchIndicator.style.display = 'block';
+
+    try {
+        rows.forEach(row => {
+            const cells = row.getElementsByTagName("td");
+            let found = false;
+
+            Array.from(cells).forEach(cell => {
+                if (cell.textContent.toLowerCase().includes(filter)) {
+                    found = true;
+                }
+            });
+
+            row.style.display = found ? "" : "none";
+            if (found) hasResults = true;
+        });
+
+        // Mostrar mensaje si no hay resultados
+        const noResults = document.getElementById('noResults');
+        if (noResults) {
+            noResults.style.display = hasResults || !filter ? 'none' : 'block';
+        }
+
+    } catch (error) {
+        console.error('Error en la búsqueda:', error);
+    } finally {
+        if (searchIndicator) searchIndicator.style.display = 'none';
+    }
+}, 300)); // 300ms de debounce
