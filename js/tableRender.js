@@ -1,24 +1,26 @@
+// Función para renderizar la tabla con los datos proporcionados
 function renderTable(data) {
     const table = document.getElementById("data-table");
     const thead = table.querySelector("thead");
     const tbody = table.querySelector("tbody");
 
-    thead.innerHTML = "";
-    tbody.innerHTML = "";
+    thead.innerHTML = ""; // Limpiar encabezado
+    tbody.innerHTML = ""; // Limpiar cuerpo de la tabla
 
-    if (data.length === 0) return;
+    if (data.length === 0) return; // Si no hay datos, no hacer nada
 
     // Crear encabezados manualmente
     const headerRow = document.createElement("tr");
     const headers = ["Id", "Name", "Last Name", "Email", "Whatsapp", "Funnel", "Course", "Actions"];
 
+    // Crear y agregar cada celda de encabezado
     headers.forEach(headerText => {
         const th = document.createElement("th");
         th.textContent = headerText;
         headerRow.appendChild(th);
     });
 
-    thead.appendChild(headerRow);
+    thead.appendChild(headerRow); // Agregar fila de encabezados a la tabla
 
     // Listas de opciones para "Funnel" y "Course"
     const cursosDisponibles = ["HTML", "CSS", "JavaScript", "Java"];
@@ -79,7 +81,7 @@ function renderTable(data) {
         actionTd.appendChild(deleteBtn);
         row.appendChild(actionTd);
 
-        tbody.appendChild(row);
+        tbody.appendChild(row); // Agregar la fila de datos a la tabla
     });
 }
 
@@ -87,6 +89,7 @@ function renderTable(data) {
 function openEditModal(rowIndex, row) {
     const cells = row.querySelectorAll("td");
 
+    // Rellenar los campos del modal con los valores de la fila seleccionada
     document.getElementById("name").value = cells[1].textContent;
     document.getElementById("lastName").value = cells[2].textContent;
     document.getElementById("email").value = cells[3].textContent;
@@ -106,7 +109,7 @@ function openEditModal(rowIndex, row) {
 
     // Guardar cambios al hacer clic en "Guardar Cambios"
     document.getElementById("saveChanges").onclick = function () {
-        saveRow(rowIndex);
+        saveRow(rowIndex); // Guardar los cambios de la fila editada
     };
 }
 
@@ -115,6 +118,7 @@ function saveRow(rowIndex) {
     const row = document.querySelectorAll("#data-table tbody tr")[rowIndex];
     const cells = row.querySelectorAll("td");
 
+    // Actualizar las celdas de la fila con los nuevos valores del modal
     cells[1].textContent = document.getElementById("name").value;
     cells[2].textContent = document.getElementById("lastName").value;
     cells[3].textContent = document.getElementById("email").value;
@@ -145,6 +149,7 @@ document.querySelector(".close").onclick = function () {
     modal.style.display = "none";
 };
 
+// Cerrar el modal si se hace clic fuera de él
 window.onclick = function (event) {
     const modal = document.getElementById("editModal");
     if (event.target == modal) {

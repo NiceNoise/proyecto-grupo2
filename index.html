@@ -4,30 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestión de Datos Excel</title>
+    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Archivo de estilos personalizado -->
     <link href="css/style.css" rel="stylesheet">
 </head>
 <body>
 
 <div class="container mt-5">
+    <!-- Barra de navegación -->
     <nav class="mb-4">
        <!-- Enlace "Inicio" con el ID para el botón -->
        <a href="index.html" id="home-link" class="btn btn-primary">Inicio</a>
     </nav>
 
+    <!-- Título principal de la página -->
     <h2 class="text-center mb-4">Cargar y Editar Archivos Excel</h2>
 
+    <!-- Input para cargar archivos Excel -->
     <div class="mb-3">
         <input type="file" id="excel-file" class="form-control" />
     </div>
 
+    <!-- Input de búsqueda -->
     <div class="mb-3">
         <input type="text" id="search-input" class="form-control" placeholder="Buscar datos..." />
     </div>
 
+    <!-- Tabla para mostrar los datos cargados del archivo Excel -->
     <table class="table table-hover table-striped" id="data-table">
         <thead class="thead-dark">
             <tr>
+                <!-- Encabezado de la tabla con las columnas correspondientes -->
                 <th>Id</th>
                 <th>Name</th>
                 <th>Last Name</th>
@@ -38,32 +46,38 @@
                 <th>Actions</th>
             </tr>
         </thead>
-        <tbody></tbody>
+        <tbody></tbody> <!-- Cuerpo de la tabla que se llenará dinámicamente -->
     </table>
 </div>
 
-<!-- Modal para editar fila -->
+<!-- Modal para editar fila (oculto por defecto) -->
 <div id="editModal" class="modal" style="display:none;">
     <div class="modal-content">
-        <span class="close">&times;</span>
+        <span class="close">&times;</span> <!-- Botón para cerrar el modal -->
         <h2>Editar Fila</h2>
+        <!-- Formulario para editar los campos de la fila seleccionada -->
         <form id="editForm">
+            <!-- Campo para el nombre -->
             <div class="mb-3">
                 <label for="name" class="form-label">Name:</label>
                 <input type="text" id="name" name="name" class="form-control">
             </div>
+            <!-- Campo para el apellido -->
             <div class="mb-3">
                 <label for="lastName" class="form-label">Last Name:</label>
                 <input type="text" id="lastName" name="lastName" class="form-control">
             </div>
+            <!-- Campo para el correo electrónico -->
             <div class="mb-3">
                 <label for="email" class="form-label">Email:</label>
                 <input type="text" id="email" name="email" class="form-control">
             </div>
+            <!-- Campo para el número de Whatsapp -->
             <div class="mb-3">
                 <label for="whatsapp" class="form-label">Whatsapp:</label>
                 <input type="text" id="whatsapp" name="whatsapp" class="form-control">
             </div>
+            <!-- Selector para el estado del embudo de ventas (Funnel) -->
             <div class="mb-3">
                 <label for="funnel" class="form-label">Funnel:</label>
                 <select id="funnel" name="funnel" class="form-select">
@@ -72,6 +86,7 @@
                     <option value="Terminado">Terminado</option>
                 </select>
             </div>
+            <!-- Selector para el curso asociado -->
             <div class="mb-3">
                 <label for="course" class="form-label">Course:</label>
                 <select id="course" name="course" class="form-select">
@@ -81,6 +96,7 @@
                     <option value="Java">Java</option>
                 </select>
             </div>
+            <!-- Botón para guardar los cambios -->
             <button type="button" id="saveChanges" class="btn btn-success">Guardar Cambios</button>
         </form>
     </div>
@@ -89,16 +105,15 @@
 <!-- Cargar Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-<!-- Cargar bibliotecas externas -->
+<!-- Bibliotecas externas para procesar archivos Excel -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.mini.min.js"></script>
 
-<!-- Scripts personalizados -->
-<script src="js/loadFile.js"></script>
-<script src="js/tableRender.js"></script>
-<script src="js/search.js"></script>
-<script src="js/editDelete.js"></script>
-<script src="js/modalEdit.js"></script>
-
+<!-- Scripts personalizados para funcionalidad de la página -->
+<script src="js/loadFile.js"></script> <!-- Carga y procesamiento del archivo Excel -->
+<script src="js/tableRender.js"></script> <!-- Renderizado de la tabla con los datos -->
+<script src="js/search.js"></script> <!-- Funcionalidad de búsqueda en la tabla -->
+<script src="js/editDelete.js"></script> <!-- Edición y eliminación de filas -->
+<script src="js/modalEdit.js"></script> <!-- Manejo del modal de edición -->
 
 </body>
 </html>
