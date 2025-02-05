@@ -53,7 +53,7 @@ pie
 - Campos básicos: Nombre, WhatsApp, correo opcional.  
 - Carga masiva vía CSV: Soporte para archivos de hasta 1,000 registros.  
 
-#### Plantillas por etapa del funnel
+#### Plantillas por etapa del Course
 
 - Bienvenida: Mensaje inicial con enlaces a programas.  
 - Seguimiento: Recordatorios personalizados.  

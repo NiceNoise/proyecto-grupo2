@@ -41,15 +41,15 @@ Para *responder rápidamente y personalizar la comunicación*.
 ### Notas Técnicas
 
 - *Componentes necesarios*: Botón de envío, integración con la API de WhatsApp, editor de mensajes.
-- *Modelos de datos*: PlantillaMensaje (contenido, etapa del funnel).
+- *Modelos de datos*: PlantillaMensaje (contenido, etapa del Course).
 - *Interacciones*: Llamada a la API de WhatsApp para abrir el chat con el mensaje predefinido.
 
 ---
 
-## Historia de Usuario: Etiquetar leads según su etapa en el funnel
+## Historia de Usuario: Etiquetar leads según su etapa en el Course
 
 Como *coordinador de ventas*  
-Quiero *poder etiquetar a los leads según su etapa en el funnel*  
+Quiero *poder etiquetar a los leads según su etapa en el Course*  
 Para *realizar un seguimiento más organizado y efectivo*.
 
 ### Criterios de Aceptación
@@ -96,12 +96,12 @@ Para *evaluar el desempeño del equipo y tomar decisiones basadas en datos*.
 
 Como *administrador del sistema*  
 Quiero *poder crear y editar plantillas de mensajes predeterminados*  
-Para *adaptar la comunicación a diferentes etapas del funnel*.
+Para *adaptar la comunicación a diferentes etapas del Course*.
 
 ### Criterios de Aceptación
 
 1. Dado que necesito una nueva plantilla,  
-   Cuando ingreso el contenido y selecciono la etapa del funnel,  
+   Cuando ingreso el contenido y selecciono la etapa del Course,  
    Entonces la plantilla se guarda y está disponible para su uso.
 2. Dado que una plantilla necesita actualización,  
    Cuando edito su contenido,  
@@ -110,7 +110,7 @@ Para *adaptar la comunicación a diferentes etapas del funnel*.
 ### Notas Técnicas
 
 - *Componentes necesarios*: Formulario de creación/edición de plantillas, lista de plantillas.
-- *Modelos de datos*: PlantillaMensaje (contenido, etapa del funnel).
+- *Modelos de datos*: PlantillaMensaje (contenido, etapa del Course).
 - *Interacciones*: Validación del contenido antes de guardar la plantilla.
 
 ---

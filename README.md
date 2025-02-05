@@ -36,11 +36,11 @@ El MVP se centra en las siguientes funcionalidades clave:
 ### 2. **Integración con WhatsApp**
 
 - Envío de mensajes predeterminados con un solo clic (click-to-chat).
-- Plantillas de mensajes para diferentes etapas del funnel (bienvenida, seguimiento, cierre).
+- Plantillas de mensajes para diferentes etapas del Course (bienvenida, seguimiento, cierre).
 
 ### 3. **Etiquetado Automático**
   
-- Categorización de leads por curso y etapa en el funnel.
+- Categorización de leads por curso y etapa en el Course.
 
 ---
 
