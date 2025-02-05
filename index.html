@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Datos Excel</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container mt-5">
+    <nav class="mb-4">
+       <!-- Enlace "Inicio" con el ID para el botón -->
+       <a href="index.html" id="home-link" class="btn btn-primary">Inicio</a>
+    </nav>
+
+    <h2 class="text-center mb-4">Cargar y Editar Archivos Excel</h2>
+
+    <div class="mb-3">
+        <input type="file" id="excel-file" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <input type="text" id="search-input" class="form-control" placeholder="Buscar datos..." />
+    </div>
+
+    <table class="table table-hover table-striped" id="data-table">
+        <thead class="thead-dark">
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Whatsapp</th>
+                <th>Funnel</th>
+                <th>Course</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
+
+<!-- Modal para editar fila -->
+<div id="editModal" class="modal" style="display:none;">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Editar Fila</h2>
+        <form id="editForm">
+            <div class="mb-3">
+                <label for="name" class="form-label">Name:</label>
+                <input type="text" id="name" name="name" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label for="lastName" class="form-label">Last Name:</label>
+                <input type="text" id="lastName" name="lastName" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email:</label>
+                <input type="text" id="email" name="email" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label for="whatsapp" class="form-label">Whatsapp:</label>
+                <input type="text" id="whatsapp" name="whatsapp" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label for="funnel" class="form-label">Funnel:</label>
+                <select id="funnel" name="funnel" class="form-select">
+                    <option value="Inicio">Inicio</option>
+                    <option value="En progreso">En progreso</option>
+                    <option value="Terminado">Terminado</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="course" class="form-label">Course:</label>
+                <select id="course" name="course" class="form-select">
+                    <option value="HTML">HTML</option>
+                    <option value="CSS">CSS</option>
+                    <option value="JavaScript">JavaScript</option>
+                    <option value="Java">Java</option>
+                </select>
+            </div>
+            <button type="button" id="saveChanges" class="btn btn-success">Guardar Cambios</button>
+        </form>
+    </div>
+</div>
+
+<!-- Cargar Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Cargar bibliotecas externas -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.mini.min.js"></script>
+
+<!-- Scripts personalizados -->
+<script src="js/loadFile.js"></script>
+<script src="js/tableRender.js"></script>
+<script src="js/search.js"></script>
+<script src="js/editDelete.js"></script>
+<script src="js/modalEdit.js"></script>
+
+
+</body>
+</html>
