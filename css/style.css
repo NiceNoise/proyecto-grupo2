@@ -108,15 +108,41 @@ h2 {
     background: darkred;
 }
 
-button:focus {
-    outline: none;
+/* Estilo personalizado para el modal */
+.modal-content {
+    max-width: 400px; /* Limita el ancho del modal */
+    margin: 10px auto; /* Centrado automático */
+    padding: 20px; /* Espaciado interno */
+    background-color: #fff; /* Fondo blanco */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
 }
 
-/* Fondo oscuro del modal */
-.modal-content {
-    max-width: 100%;
-    padding: 20px;
-    border-radius: 10px;
+/* Estilo de los botones */
+button {
+    border-radius: 5px; /* Bordes redondeados en los botones */
+    font-size: 16px;
+    padding: 10px 20px;
+}
+
+/* Estilos para los campos de texto dentro del modal */
+input, select {
+    border-radius: 5px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+/* Estilo para los títulos dentro del modal */
+.modal-content h2 {
+    font-size: 20px;
+    color: #333;
+    text-align: center;
+}
+
+button:focus {
+    outline: none;
 }
 
 /* Estilo de los formularios dentro del modal */
@@ -135,4 +161,3 @@ button.btn {
     padding: 10px 20px;
     font-weight: bold;
 }
-
