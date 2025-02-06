@@ -1,3 +1,9 @@
+// Variables generales scope load.js
+let currentPage = 1;
+const itemsPerPage = 5;
+let filteredLeads = [];
+
+
 // Función para abrir el explorador de archivos al presionar "Load"
 document.getElementById('loadBtn').addEventListener('click', function() {
     const inputFile = document.createElement('input');
@@ -44,18 +50,63 @@ function parseCSV(csvData) {
             });
             
             localStorage.setItem("leads", JSON.stringify(leads));
-            updateTable(); // Llamar a la función para actualizar la tabla
+
+            filteredLeads = getLeads();
+            renderTable();
+            renderPagination();
+        
         },
         header: false
     });
 }
 
-// Función para actualizar la tabla con los datos de los leads
-function updateTable() {
-    const tableBody = document.getElementById('leadTableBody');
-    tableBody.innerHTML = ''; // Limpiar la tabla antes de agregar los nuevos datos
 
-    leads.forEach(function(lead) {
+function renderPagination() {
+    const pagination = document.getElementById('pagination');
+    const totalPages = Math.ceil(filteredLeads.length / itemsPerPage);
+
+    pagination.innerHTML = '';
+
+    // Botón Anterior
+    const prevButton = `<li class="page-item ${currentPage === 1 ? 'disabled' : ''}">
+        <a class="page-link" href="#" data-page="${currentPage - 1}">Previous</a></li>`;
+    pagination.insertAdjacentHTML('beforeend', prevButton);
+
+    // Botones numéricos
+    for (let i = 1; i <= totalPages; i++) {
+        const active = i === currentPage ? 'active' : '';
+        const pageButton = `<li class="page-item ${active}">
+            <a class="page-link" href="#" data-page="${i}">${i}</a></li>`;
+        pagination.insertAdjacentHTML('beforeend', pageButton);
+    }
+
+    // Botón Siguiente
+    const nextButton = `<li class="page-item ${currentPage === totalPages ? 'disabled' : ''}">
+        <a class="page-link" href="#" data-page="${currentPage + 1}">Next</a></li>`;
+    pagination.insertAdjacentHTML('beforeend', nextButton);
+
+    // Event listeners
+    pagination.querySelectorAll('.page-link').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            currentPage = parseInt(link.dataset.page);
+            renderTable();
+            renderPagination();
+        });
+    });
+
+}
+
+// Renderizado de tabla
+function renderTable() {
+    const tbody = document.querySelector('#leadsTable tbody');
+    const start = (currentPage - 1) * itemsPerPage;
+    const end = start + itemsPerPage;
+    const pageItems = filteredLeads.slice(start, end);
+    
+    tbody.innerHTML = '';
+    
+    pageItems.forEach(lead => {
         const row = document.createElement('tr');
         row.innerHTML = `
             <td>${lead.id}</td>
@@ -64,11 +115,20 @@ function updateTable() {
             <td>${lead.correo}</td>
             <td>${lead.whatsapp}</td>
         `;
-        tableBody.appendChild(row);
+        tbody.appendChild(row);
     });
 }
 
-// Función para redirigir al usuario al presionar el botón "Home"
-document.getElementById('homeBtn').addEventListener('click', function() {
-    window.location.href = 'index.html'; // Redirige a la misma página
+
+// Funciones de utilidad
+function getLeads() {
+    return JSON.parse(localStorage.getItem('leads')) || [];
+}
+
+
+// Función para inicializar la página
+document.addEventListener('DOMContentLoaded', () => {
+    filteredLeads = getLeads();
+    renderTable();
+    renderPagination();
 });

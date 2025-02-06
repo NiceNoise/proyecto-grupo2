@@ -1,3 +1,10 @@
+:root {
+    --primary-blue: #0d6efd;
+    --secondary-blue: #6c757d;
+    --light-blue: #e8f0fe;
+    --hover-blue: #0b5ed7;
+}
+
 body {
     background-color: #f8f9fa;
     font-family: Arial, sans-serif;
@@ -16,9 +23,47 @@ body {
     background-color: #0056b3;
 }
 
+.card {
+    border-radius: 0.5rem;
+    border: none;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.table th {
+    background-color: var(--light-blue);
+    border-bottom: 2px solid var(--primary-blue);
+}
+
+.table td {
+    vertical-align: middle;
+}
+
 .table th, .table td {
     text-align: center;
 }
+
+.pagination {
+    margin-top: 1.5rem;
+}
+
+.pagination .page-link {
+    color: var(--primary-blue);
+    min-width: 40px;
+    text-align: center;
+    transition: all 0.2s;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: var(--primary-blue);
+    border-color: var(--primary-blue);
+    font-weight: 600;
+}
+
+.page-link:hover {
+    background-color: var(--light-blue);
+    color: var(--primary-blue);
+}
+
 
 .btn-home {
     position: fixed;
@@ -43,6 +88,10 @@ body {
     font-size: 1.5rem;
 }
 
+.action-buttons button {
+    padding: 0.25rem 0.5rem;
+    margin: 0 0.2rem;
+}
 
 @media (max-width: 576px) {
 

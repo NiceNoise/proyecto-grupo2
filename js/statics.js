@@ -67,6 +67,7 @@ function createFunnelChart() {
     });
 }
 
+
 // Configurar botón de inicio
 document.addEventListener('DOMContentLoaded', () => {
     // Crear gráfico

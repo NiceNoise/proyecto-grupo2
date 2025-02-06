@@ -291,9 +291,4 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Cargar datos iniciales
     applyFilters();
-    
-    // Configurar botón de inicio
-    document.getElementById('homeButton').addEventListener('click', () => {
-        window.location.href = 'index.html';
-    });
 });
