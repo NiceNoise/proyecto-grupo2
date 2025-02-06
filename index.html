@@ -1,65 +1,65 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestión de Usuarios</title>
+    <title>User Management</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <div class="container mt-5">
-        <h1 class="text-center">Gestión de Usuarios</h1>
+        <h1 class="text-center">User Management</h1>
 
-        <!-- Botón Home -->
+        <!-- Home Button -->
         <div class="mb-3 text-start">
             <a href="index.html" class="btn btn-primary">🏠 Home</a>
         </div>
 
-        <!-- Formulario para cargar archivo CSV -->
+        <!-- CSV File Upload Form -->
         <div class="mb-3">
             <input type="file" id="csvFileInput" class="form-control" accept=".csv">
         </div>
 
-        <!-- Barra de búsqueda -->
+        <!-- Search Bar -->
         <div class="mb-3">
-            <input type="text" id="searchInput" class="form-control" placeholder="Buscar usuario...">
+            <input type="text" id="searchInput" class="form-control" placeholder="Search user...">
         </div>
 
-        <!-- Tabla de usuarios -->
+        <!-- Users Table -->
         <div class="table-responsive">
             <table class="table table-bordered text-center" id="usersTable">
                 <thead>
                     <tr class="table-primary">
                         <th>Code</th>
-                        <th>Name</th>
+                        <th>First Name</th>
                         <th>Last Name</th>
                         <th>Email</th>
-                        <th>Whatsapp</th>
+                        <th>WhatsApp</th>
                         <th>Funnel</th>
                         <th>Course</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- Aquí se insertarán las filas de usuarios -->
+                    <!-- User rows will be inserted here -->
                 </tbody>
             </table>
         </div>
     </div>
 
-    <!-- Modal para editar usuario -->
+    <!-- Edit User Modal -->
     <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="editModalLabel">Editar Usuario</h5>
+                    <h5 class="modal-title" id="editModalLabel">Edit User</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <form id="editUserForm">
                         <div class="mb-3">
-                            <label for="nameInput" class="form-label">Name</label>
+                            <label for="nameInput" class="form-label">First Name</label>
                             <input type="text" class="form-control" id="nameInput">
                         </div>
                         <div class="mb-3">
@@ -71,7 +71,7 @@
                             <input type="email" class="form-control" id="emailInput">
                         </div>
                         <div class="mb-3">
-                            <label for="whatsappInput" class="form-label">Whatsapp</label>
+                            <label for="whatsappInput" class="form-label">WhatsApp</label>
                             <input type="text" class="form-control" id="whatsappInput">
                         </div>
                         <div class="mb-3">
@@ -85,8 +85,8 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-success" id="saveChangesBtn">Guardar Cambios</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-success" id="saveChangesBtn">Save Changes</button>
                 </div>
             </div>
         </div>
