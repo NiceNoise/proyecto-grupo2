@@ -1,26 +1,28 @@
-let users = []; // Almacena los usuarios cargados
+// Store users
+let users = [];
 
+// Load data when the page is ready
 document.addEventListener("DOMContentLoaded", () => {
-    loadCSVData(); // Cargar datos desde localStorage o predefinidos
+    loadCSVData(); // Load data from localStorage or predefined
 
-    // Escuchar el evento de selección de archivo CSV
+    // Listen for CSV file selection
     document.getElementById("csvFileInput").addEventListener("change", handleFileSelect, false);
 
-    // Delegar eventos en la tabla para editar y eliminar
+    // Delegate events for editing and deleting users
     document.querySelector("#usersTable").addEventListener("click", function (event) {
         const id = parseInt(event.target.getAttribute("data-id"));
         if (event.target.classList.contains("btn-editar")) editUser(id);
         if (event.target.classList.contains("btn-eliminar")) deleteUser(id);
     });
 
-    // Manejar el guardado de cambios en el modal de edición
+    // Handle saving changes in edit modal
     document.getElementById("saveChangesBtn").addEventListener("click", saveUserChanges);
 
-    // Escuchar evento de búsqueda
+    // Listen for search input
     document.getElementById("searchInput").addEventListener("input", filterUsers);
 });
 
-// Filtrar usuarios en la tabla
+// Filter users in the table
 function filterUsers() {
     let filter = this.value.toLowerCase();
     document.querySelectorAll("#usersTable tbody tr").forEach(row => {
@@ -28,31 +30,31 @@ function filterUsers() {
     });
 }
 
-// Manejar la carga del archivo CSV
+// Handle CSV file upload
 function handleFileSelect(event) {
     const file = event.target.files[0];
     if (file && file.name.endsWith(".csv")) {
         const reader = new FileReader();
         reader.onload = (e) => {
             users = parseCSV(e.target.result);
-            saveToLocalStorage(); // Guardar en localStorage
+            saveToLocalStorage(); // Save to localStorage
             loadUsers(users);
         };
         reader.readAsText(file);
     } else {
-        alert("Por favor, selecciona un archivo CSV válido.");
+        alert("Please select a valid CSV file.");
     }
 }
 
-// Convertir CSV en un array de usuarios
+// Convert CSV text to an array of users
 function parseCSV(csvText) {
     return csvText.split("\n").filter(row => row.trim() !== "").map(row => {
         const cols = row.split(",").map(col => col.trim());
         return {
             code: generateCode(),
-            nombre: cols[0] || "",
-            apellido: cols[1] || "",
-            correo: cols[2] || "",
+            firstName: cols[0] || "",
+            lastName: cols[1] || "",
+            email: cols[2] || "",
             whatsapp: cols[3] || "",
             funnel: cols[4] || "Funnel process",
             course: cols[5] || "Course process"
@@ -60,41 +62,44 @@ function parseCSV(csvText) {
     });
 }
 
-// Generar un código único de usuario
+// Generate sequential user code
 function generateCode() {
-    return Math.floor(Math.random() * 100000);
+    let lastCode = localStorage.getItem("lastUserCode");
+    let newCode = lastCode ? parseInt(lastCode) + 1 : 25001;
+    localStorage.setItem("lastUserCode", newCode);
+    return newCode;
 }
 
-// Cargar los usuarios en la tabla
+// Load users into the table
 function loadUsers(users) {
     const tableBody = document.querySelector("#usersTable tbody");
-    tableBody.innerHTML = ""; // Limpiar la tabla
+    tableBody.innerHTML = ""; // Clear table
 
     users.forEach(user => {
         const row = document.createElement("tr");
         row.innerHTML = `
             <td>${user.code}</td>
-            <td>${user.nombre}</td>
-            <td>${user.apellido}</td>
-            <td>${user.correo}</td>
+            <td>${user.firstName}</td>
+            <td>${user.lastName}</td>
+            <td>${user.email}</td>
             <td>${user.whatsapp}</td>
             <td>${user.funnel}</td>
             <td>${user.course}</td>
             <td>
-                <button class="btn btn-warning btn-editar" data-id="${user.code}">Editar</button>
-                <button class="btn btn-danger btn-eliminar" data-id="${user.code}">Eliminar</button>
+                <button class="btn btn-warning btn-editar" data-id="${user.code}">Edit</button>
+                <button class="btn btn-danger btn-eliminar" data-id="${user.code}">Delete</button>
             </td>
         `;
         tableBody.appendChild(row);
     });
 }
 
-// Guardar en localStorage
+// Save users to localStorage
 function saveToLocalStorage() {
     localStorage.setItem("usersData", JSON.stringify(users));
 }
 
-// Cargar datos guardados en localStorage
+// Load saved data from localStorage
 function loadCSVData() {
     const savedUsers = localStorage.getItem("usersData");
     if (savedUsers) {
@@ -103,51 +108,51 @@ function loadCSVData() {
     }
 }
 
-// Abrir el modal de edición con datos del usuario
+// Open edit modal with user data
 function editUser(code) {
     const user = users.find(u => u.code === code);
     if (user) {
         const editModal = new bootstrap.Modal(document.getElementById("editModal"));
         editModal.show();
 
-        // Rellenar los campos del modal
-        document.getElementById("nameInput").value = user.nombre;
-        document.getElementById("lastnameInput").value = user.apellido;
-        document.getElementById("emailInput").value = user.correo;
+        // Fill modal fields
+        document.getElementById("nameInput").value = user.firstName;
+        document.getElementById("lastnameInput").value = user.lastName;
+        document.getElementById("emailInput").value = user.email;
         document.getElementById("whatsappInput").value = user.whatsapp;
         document.getElementById("funnelInput").value = user.funnel;
         document.getElementById("coursesInput").value = user.course;
 
-        // Guardar el código del usuario en el modal
+        // Store user code in modal
         document.getElementById("saveChangesBtn").setAttribute("data-id", user.code);
     }
 }
 
-// Guardar los cambios de un usuario editado
+// Save changes of an edited user
 function saveUserChanges() {
     const id = parseInt(document.getElementById("saveChangesBtn").getAttribute("data-id"));
     const user = users.find(u => u.code === id);
     if (user) {
-        user.nombre = document.getElementById("nameInput").value;
-        user.apellido = document.getElementById("lastnameInput").value;
-        user.correo = document.getElementById("emailInput").value;
+        user.firstName = document.getElementById("nameInput").value;
+        user.lastName = document.getElementById("lastnameInput").value;
+        user.email = document.getElementById("emailInput").value;
         user.whatsapp = document.getElementById("whatsappInput").value;
         user.funnel = document.getElementById("funnelInput").value;
         user.course = document.getElementById("coursesInput").value;
 
-        saveToLocalStorage(); // Guardar cambios en localStorage
+        saveToLocalStorage(); // Save changes to localStorage
         loadUsers(users);
 
-        // Cerrar el modal
+        // Close modal
         bootstrap.Modal.getInstance(document.getElementById("editModal")).hide();
     }
 }
 
-// Eliminar un usuario
+// Delete a user
 function deleteUser(code) {
-    if (confirm("¿Estás seguro de que quieres eliminar este usuario?")) {
+    if (confirm("Are you sure you want to delete this user?")) {
         users = users.filter(user => user.code !== code);
-        saveToLocalStorage(); // Guardar cambios en localStorage
+        saveToLocalStorage(); // Save changes to localStorage
         loadUsers(users);
     }
 }
