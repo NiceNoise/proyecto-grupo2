@@ -1,180 +1,208 @@
-/* ===== GENERAL ===== */
+/* General reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styles */
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #f4f4f9;
+    background-color: #f4f7fc;
     color: #333;
-    margin: 0;
+    line-height: 1.6;
+}
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
     padding: 20px;
 }
 
-/* ===== CONTENEDOR PRINCIPAL ===== */
-.container {
-    max-width: 1000px;
-    margin: auto;
-    background: white;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+/* Header */
+h1 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #4e73df;
+    margin-bottom: 30px;
+    text-align: center;
 }
 
-/* ===== TITULOS ===== */
-h2 {
-    color: #007bff;
-    font-weight: bold;
-}
-
-/* ===== TABLA ===== */
+/* Table Styles */
 .table {
-    width: 100%;
-    margin-top: 20px;
-    border-radius: 5px;
+    background-color: #fff;
+    border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
+}
+
+.table th,
+.table td {
+    padding: 12px;
+    text-align: center;
+    font-size: 1rem;
 }
 
 .table th {
-    background-color: #343a40;
-    color: white;
-    text-align: center;
-    padding: 12px;
+    background-color: #4e73df;
+    color: #fff;
+    text-transform: uppercase;
 }
 
-.table td, .table th {
-    vertical-align: middle;
-}
-
-.table td {
-    text-align: center;
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
-}
-
-/* Estilo de filas alternas */
-.table tbody tr:nth-child(even) {
-    background-color: #f8f9fc;
-}
-
-/* Hover en filas */
 .table tbody tr:hover {
-    background-color: #e9f5ff;
+    background-color: #f1f1f1;
+    cursor: pointer;
 }
 
-.table-responsive {
-    margin-top: 20px;
-    overflow-x: auto;
+.table td button {
+    font-size: 0.9rem;
+    padding: 6px 12px;
+    transition: all 0.3s ease;
 }
 
-#default-message {
-    display: table-row;
+.table td button:hover {
+    opacity: 0.8;
 }
 
-.d-none {
-    display: none !important;
+/* Botón de editar */
+.btn-editar {
+    background-color: #ffc107;
+    border: none;
+    color: black;
+    padding: 6px 12px;
+    border-radius: 5px;
 }
 
-/* ===== MODAL (Edición) ===== */
-.modal {
-    display: none;
+.btn-editar:hover {
+    background-color: #e0a800;
+}
+
+/* Botón de eliminar */
+.btn-eliminar {
+    background-color: #dc3545;
+    border: none;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 5px;
+}
+
+.btn-eliminar:hover {
+    background-color: #c82333;
+}
+
+/* Estilo del modal */
+.modal-backdrop {
+    display: none; /* Inicialmente oculto */
     position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 50%;
-    background: white;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
     z-index: 1000;
-    animation: fadeIn 0.3s ease-in-out;
-}
-
-/* Fondo oscuro al abrir el modal */
-.modal-overlay {
-    display: none;
-    position: fixed;
-    top: 0;
     left: 0;
+    top: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 999;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0 !important;
+    transition: opacity 0.3s ease;
+    justify-content: center;
+    align-items: center;
 }
 
-/* Animación para el modal */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
+/* Mostrar modal */
+.modal.show {
+    display: flex; /* Centra el modal */
+    opacity: 1;
 }
 
-/* Estilo para el botón de cerrar */
-.close {
-    background: red;
-    color: white;
-    border: none;
-    padding: 8px 12px;
-    float: right;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-.close:hover {
-    background: darkred;
-}
-
-/* Estilo personalizado para el modal */
+/* Contenido del modal */
 .modal-content {
-    max-width: 400px; /* Limita el ancho del modal */
-    margin: 10px auto; /* Centrado automático */
-    padding: 20px; /* Espaciado interno */
-    background-color: #fff; /* Fondo blanco */
-    border-radius: 10px; /* Bordes redondeados */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%; /* Ajustado para mejor visualización */
+    max-width: 500px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
-/* Estilo de los botones */
-button {
-    border-radius: 5px; /* Bordes redondeados en los botones */
-    font-size: 16px;
-    padding: 10px 20px;
-}
-
-/* Estilos para los campos de texto dentro del modal */
-input, select {
-    border-radius: 5px;
+/* Header del modal */
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #007bff;
+    color: white;
     padding: 10px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+/* Footer del modal */
+.modal-footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    padding-top: 10px;
+}
+
+/* Botones del modal */
+.modal-footer .btn {
+    font-size: 0.9rem;
+    padding: 8px 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.modal-footer .btn-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+.modal-footer .btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+.modal-footer .btn-success {
+    background-color: #28a745;
+    color: white;
+}
+
+.modal-footer .btn-success:hover {
+    background-color: #218838;
+}
+
+/* Formulario dentro del modal */
+.modal-body .form-group {
+    margin-bottom: 15px;
+}
+
+.modal-body .form-control {
+    font-size: 1rem;
+    padding: 10px;
+    border-radius: 5px;
     border: 1px solid #ccc;
     width: 100%;
-    margin-bottom: 10px;
 }
 
-/* Estilo para los títulos dentro del modal */
-.modal-content h2 {
-    font-size: 20px;
+/* Removiendo bordes rojos en los inputs */
+.modal-body .form-control.is-invalid {
+    border-color: #dc3545; /* Bootstrap color de error */
+}
+
+.modal-body .form-control:focus {
+    border-color: #4e73df;
+    box-shadow: 0 0 0 0.2rem rgba(34, 34, 153, 0.25);
+}
+
+/* Botón de cierre del modal */
+.btn-close {
+    background-color: transparent;
+    border: none;
+    font-size: 1.5rem;
+    color: #aaa;
+    cursor: pointer;
+}
+
+.btn-close:hover {
     color: #333;
-    text-align: center;
-}
-
-button:focus {
-    outline: none;
-}
-
-/* Estilo de los formularios dentro del modal */
-.form-label {
-    font-weight: bold;
-}
-
-input.form-control, select.form-select {
-    border-radius: 5px;
-    padding: 10px;
-    margin-bottom: 10px;
-}
-
-button.btn {
-    margin-top: 10px;
-    padding: 10px 20px;
-    font-weight: bold;
 }
