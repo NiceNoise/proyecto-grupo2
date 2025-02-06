@@ -37,8 +37,8 @@ function createFunnelChart() {
         leads.filter(lead => lead.funnel === f.id).length
     );
 
-    funnelCounts=[17,34,25,19];
-    console.log(funnelCounts);
+   // funnelCounts=[17,34,25,19];
+   // console.log(funnelCounts);
 
     const ctx = document.getElementById('funnelChart').getContext('2d');
     new Chart(ctx, {

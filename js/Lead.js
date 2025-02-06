@@ -1,5 +1,5 @@
 // Función constructora para el objeto Lead
-function Lead(id,nombre, apellido, correo, whatsapp, funnel = 1, curso = '') {
+function Lead(id,nombre, apellido, correo, whatsapp, funnel = 1, curso = 0) {
     this.id=id;
     this.nombre = nombre;
     this.apellido = apellido;

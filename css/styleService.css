@@ -1,118 +1,126 @@
 :root {
     --primary-blue: #0d6efd;
-    --dark-blue: #0a58ca;
-    --white: white;
+    --light-blue: #e7f1ff;
+    --white: #ffffff;
+    --hover-blue: #0b5ed7;
 }
 
-/* General Styles */
 body {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
     background-color: var(--white);
-    font-family: Arial, sans-serif;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
 }
 
-.color-menu{
-    color: var(--white);
+.card {
+    border-radius: 0.5rem;
+    border: none;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
-.text-footer{
-    color: var(--white);
-    text-decoration: none;
-    font-size: 0.70rem;
+.table th {
+    background-color: var(--light-blue);
+    border-bottom: 2px solid var(--primary-blue);
 }
 
-/* Navbar Styles */
-.navbar {
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+.table td {
+    vertical-align: middle;
 }
 
-.navbar-brand {
-    font-weight: bold;
-    font-size: 1.5rem;
+.btn-send {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
 }
 
-/* Main Content Styles */
-.main-content {
-    flex: 1;
-    padding: 80px 0;
+.pagination {
+    margin-top: 1.5rem;
+}
+
+.pagination .page-link {
+    color: var(--primary-blue);
+    min-width: 40px;
+    text-align: center;
+    transition: all 0.2s;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: var(--primary-blue);
+    border-color: var(--primary-blue);
+    font-weight: 600;
+}
+
+.page-link:hover {
+    background-color: var(--light-blue);
+    color: var(--primary-blue);
+}
+
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+
+.btn-home {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
 }
 
-/* Logo Animation */
-.logo-container {
-    padding: 2rem;
+.btn-home:hover {
+    transform: translateY(-3px);
+    background-color: var(--hover-blue);
 }
 
-.animated-logo {
-    animation: pulse 2s infinite;
-    max-width: 100%;
-    height: auto;
+.btn-home i {
+    font-size: 1.5rem;
 }
 
-@keyframes pulse {
-    0% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(2.05);
-    }
-    100% {
-        transform: scale(1);
-    }
+.btn {
+    transition: all 0.3s ease;
 }
 
-/* Footer Styles */
-.footer {
-    margin-top: auto;
-    font-size: 0.9rem;
-}
 
-/* Responsive Design */
 @media (max-width: 768px) {
-    .navbar-brand {
-        font-size: 1.2rem;
-    }
-    
-    .logo-container {
+    .card-body {
         padding: 1rem;
     }
     
-    .animated-logo {
-        max-width: 150px;
+    .table {
+        font-size: 0.875rem;
     }
 }
+
+
 
 @media (max-width: 576px) {
-    .main-content {
-        padding: 60px 0;
+    h1 {
+        font-size: 1.5rem;
     }
     
-    .animated-logo {
-        max-width: 120px;
+    .btn-home {
+        width: 40px;
+        height: 40px;
     }
-}
-
-/* Hover Effects */
-.nav-link {
-    position: relative;
-    transition: color 0.3s ease;
-}
-
-.nav-link::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: 0;
-    left: 0;
-    background-color: white;
-    transition: width 0.3s ease;
-}
-
-.nav-link:hover::after {
-    width: 100%;
+    
+    .btn-home i {
+        font-size: 1.2rem;
+    }
+    
+    .action-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .action-buttons button {
+        width: 100%;
+        margin: 0;
+    }
 }
